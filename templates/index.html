@@ -29,7 +29,14 @@
   </div>
   <div class="col-md-6">
     <h3 >Food Facts</h3>
-    <p > {{foods.description | safe }} </p>
+    <table class="table table-striped">
+    {% for food in foods_obj.foods %}
+    <tr>
+    <td>{{food.brandName}}</td>
+    <td>{{food.ingredients}}</td>
+    </tr>
+    {% endfor %}
+  </table>
   </div>
 
 

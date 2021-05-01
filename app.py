@@ -14,10 +14,12 @@ collection = mongo.db.data
 def home():
 
     # Find one record of data from the mongo database
-    site_data = mongo.db.collection.find_one()
+    site_data = collection.find_one()
+
+    print(site_data)
 
     # Return template and data
-    return render_template("index.html", foods=site_data)
+    return render_template("index.html", foods_obj=site_data)
 
 
 # Route that will trigger the scrape function
