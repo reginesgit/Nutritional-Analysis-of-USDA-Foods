@@ -50,7 +50,7 @@ d3.json('/').then(function(data){
         title: "Nutrients Chart"
     };
     
-    Plotly.newPlot("plot", dataBar, layoutBar);
+    Plotly.newPlot("plotBar", dataBar, layoutBar);
     
     // Plot 2
 
