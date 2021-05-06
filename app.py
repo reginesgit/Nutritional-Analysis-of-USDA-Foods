@@ -21,23 +21,22 @@ class JSONEncoder(json.JSONEncoder):
 @app.route("/")
 def home():
 
-    # Find one record of data from the mongo database
-    #site_data = collection.find()
     site_data = [doc for doc in collection.find()]
-   # json_data = jsonify(site_data)
-    #json_data = json.dumps(site_data, sort_keys=True, indent=4, default=json_util.default)
-  #  list_data = list(site_data)
-   # json_data = json.dumps(list_data)
-   # print(json_data)
-    json_data = JSONEncoder().encode(site_data)
-    #json.encode(analytics, cls=JSONEncoder)
-    # Return template and data
-    return json_data
-   #return render_template("index.html")
 
-@app.route("/plots")
-def build_plots():
-    return render_template("plots.html")
+    json_data = JSONEncoder().encode(site_data)
+    
+    return json_data
+
+# Route to render index.html template using data from Mongo
+@app.route("/index")
+def index():
+    
+    return render_template("index.html")
+
+
+@app.route("/table")
+def build_table():
+    return render_template("table.html")
 
 @app.route("/foodNutrients/<fdcId>")
 def foodNutrients(fdcId):

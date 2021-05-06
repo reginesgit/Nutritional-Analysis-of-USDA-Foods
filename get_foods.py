@@ -4,7 +4,7 @@ from config import API_KEY
 
 def get_data():
     
-    query = "Bread"
+    query = "Milk"
 
     url = "https://api.nal.usda.gov/fdc/v1/foods/search?"
 
