@@ -2,11 +2,13 @@ d3.json('/').then(function(data){
     console.log(data);
     console.log(data[0].foods[0].foodNutrients[0].nutrientName)
     console.log(fdcId)
+    
     var food = data[0].foods
         .filter(food => food.fdcId == fdcId)  //Filter to the food that was clicked.
     console.log(food)
+    
     var foodNutrients = food[0].foodNutrients
-        .filter(foodNutrient => {
+        .filter(foodNutrient => {   // Filter for nutritional items in grams or mg only
             console.log(foodNutrient)
             if(foodNutrient.unitName === "MG" || foodNutrient.unitName === "G"){
                 return true
@@ -26,6 +28,7 @@ d3.json('/').then(function(data){
 
     console.log(foodNutrients)
 
+    // Prepare x- and y-axes for nutrients displayed in grams
     var xNutrients = foodNutrients
         .filter(foodNutrient => foodNutrient.unitName === "G")
         .map(foodNutrient => foodNutrient.nutrientName)
@@ -37,7 +40,7 @@ d3.json('/').then(function(data){
     console.log(xNutrients)
     console.log(yNutrients)
 
-    // Part 1
+    // Build Bar Chart
     var traceBar = {
         x: xNutrients,
         y: yNutrients,
@@ -51,9 +54,8 @@ d3.json('/').then(function(data){
     };
     
     Plotly.newPlot("plotBar", dataBar, layoutBar);
-    
-    // Plot 2
 
+    // Prepare x- and y-axes for trace nutrients displayed in milligrams
     var xVitamins = foodNutrients
     .filter(foodNutrient => foodNutrient.unitName === "MG")
     .map(foodNutrient => foodNutrient.nutrientName)
@@ -61,6 +63,7 @@ d3.json('/').then(function(data){
     .filter(foodNutrient => foodNutrient.unitName === "MG")
     .map(foodNutrient => foodNutrient.nutrientNumber)
 
+    // Build Pie Chart
     var tracePie = {
         labels: xVitamins,
         values: yVitamins,
