@@ -1,12 +1,6 @@
 1.	API call to USDA foods database for brand, ingredient and nutrients info.
-2.	Table with brand and ingredients (path: app/plots)
+2.	Table with brand and ingredients (path: app/table)
 3. 	Display nutrition info for selected food (click link on foods table).
 4. 	One bar chart shows nutritional values displayed in grams
-	
-	TODO: Add legend showing items in mg (remove conversion in .js file)
-
 5.	One pie chart showing vitamin/mineral content of selected food in %.
-	
-	TODO: Add legend, fix bar chart labels to look nicer
-
-TODO:	Selection box or input field to call individual foods info by executing search query.
+6.	Input field to search for individual foods info by executing API call.

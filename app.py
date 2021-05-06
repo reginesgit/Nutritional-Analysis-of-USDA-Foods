@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, jsonify
+from flask import Flask, render_template, redirect, url_for, jsonify, request
 from flask_pymongo import PyMongo
 from bson import json_util, ObjectId
 import get_foods
@@ -21,17 +21,18 @@ class JSONEncoder(json.JSONEncoder):
 @app.route("/")
 def home():
 
+    return render_template("index.html")
+
+# Route to render index.html template using data from Mongo
+@app.route("/home_data")
+def home_data():
+    
     site_data = [doc for doc in collection.find()]
 
     json_data = JSONEncoder().encode(site_data)
     
     return json_data
-
-# Route to render index.html template using data from Mongo
-@app.route("/index")
-def index():
     
-    return render_template("index.html")
 
 
 @app.route("/table")
@@ -43,17 +44,32 @@ def foodNutrients(fdcId):
     return render_template("foodNutrients.html", fdcId=fdcId)
 
 # Route that will trigger the scrape function
-@app.route("/get")
+@app.route("/get", methods=["GET", "POST"])
 def get():
 
-    # Run the scrape function
-    foods_data = get_foods.get_data()
+    if request.method == "POST":
 
-    # Update the Mongo database using update and upsert=True
-    collection.update({}, foods_data, upsert=True)
+        food = request.form["food"]
 
-    # Redirect back to home page
-    return redirect("/")
+         # Run the scrape function
+        foods_data = get_foods.get_data(food)
+
+        # Update the Mongo database using update and upsert=True
+        collection.update({}, foods_data, upsert=True)
+
+        # Redirect back to home page
+        return redirect("/table")
+
+    else:
+
+        # Run the scrape function
+        foods_data = get_foods.get_data("Cheese")
+
+        # Update the Mongo database using update and upsert=True
+        collection.update({}, foods_data, upsert=True)
+
+        # Redirect back to home page
+        return redirect("/")
 
 
 if __name__ == "__main__":

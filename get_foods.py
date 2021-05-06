@@ -2,9 +2,10 @@ import requests
 from config import API_KEY
 # from flask import jsonify
 
-def get_data():
+def get_data(query):
     
-    query = "Milk"
+    # query = "Bread"
+    print(query)
 
     url = "https://api.nal.usda.gov/fdc/v1/foods/search?"
 

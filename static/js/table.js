@@ -1,6 +1,6 @@
 var tbody = d3.select("tbody");
 
-d3.json('/').then(function(data){
+d3.json('/home_data').then(function(data){
     console.log(data);
     console.log(data[0].foods[0].foodNutrients[0].nutrientName)
 
