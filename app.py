@@ -28,11 +28,8 @@ def home():
 def home_data():
     
     site_data = [doc for doc in collection.find()]
-
-    json_data = JSONEncoder().encode(site_data)
-    
+    json_data = JSONEncoder().encode(site_data)   
     return json_data
-    
 
 
 @app.route("/table")
@@ -51,7 +48,7 @@ def get():
 
         food = request.form["food"]
 
-         # Run the scrape function
+         # Run the  API call
         foods_data = get_foods.get_data(food)
 
         # Update the Mongo database using update and upsert=True
@@ -62,7 +59,7 @@ def get():
 
     else:
 
-        # Run the scrape function
+        # Run the API call
         foods_data = get_foods.get_data("Cheese")
 
         # Update the Mongo database using update and upsert=True
