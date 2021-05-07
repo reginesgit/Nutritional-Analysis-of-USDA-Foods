@@ -50,7 +50,7 @@ d3.json('/home_data').then(function(data){
     var dataBar = [traceBar];
     
     var layoutBar = {
-        title: "Nutrients Chart"
+        title: "Nutritional Components Chart (all values in grams (g))"
     };
     
     Plotly.newPlot("plotBar", dataBar, layoutBar);
@@ -73,7 +73,7 @@ d3.json('/home_data').then(function(data){
     var dataPie = [tracePie];
     
     var layoutPie = {
-        title: "Vitamins Chart"
+        title: "Trace Elements Chart: Vitamins and Minerals"
     };
     
     Plotly.newPlot("plotPie", dataPie, layoutPie);

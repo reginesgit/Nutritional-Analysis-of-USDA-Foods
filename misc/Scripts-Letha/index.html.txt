@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
+    <title>Fun with Foods</title>
+</head>
+<body>
+    <header>
+        <div class = "Logo">Fun with Food</div>
+        <div class = "toggle active"></div>
+        <div class = "navigation active">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="foodNutrients.html">Nutrients</a></li>
+                <li><a href="plots.html">Plots</a></li>
+                <li><a href="table.html">Tables</a></li>
+                <li><a href="index.html">index</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <!--<div class ="home-img"></div>-->
+        <div class="home-content">
+            <img src="Capture.PNG" class ="home-img" alt="">
+            <h1>We try to achive <br> our goal.</h1>
+            <p>
+            </p>
+            <a href="index.html" class = "btn">Get Started</a>
+        </div>
+    </section>
+    <script src = "js.script.js"></script>
+    <script src = "CSS.style.css"></script>
+</body>
+</html>

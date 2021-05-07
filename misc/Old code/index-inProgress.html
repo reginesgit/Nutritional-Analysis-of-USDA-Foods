@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Fun with Foods</h1>
+      <p><a class="btn btn-primary btn-lg" href="/get" role="button">Get Foods Data</a></p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h3 >Food Facts</h3>
+    <table class="table table-bordered"> <!-- class="table table-striped" -->
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Ingredients</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for food in foods_obj.foods %}
+          <!-- TODO: How to access items in foods_obj.foods.foodNutrients? It's a list of dictionaries! -->
+          <tr>
+            <td>{{food.brandName}}</td>
+            <td>{{food.ingredients}}</td>
+              <!-- TODO: render these fields (then add headers!) when LoD foodNutrients is available!
+                <td>{{item.nutrientName}}</td>
+                <td>{{item.unitName}}</td>
+              -->
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
